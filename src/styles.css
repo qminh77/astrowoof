@@ -606,13 +606,13 @@ img {
 }
 
 .contract-block,
-.ref-window {
+.lore-window {
   margin-top: 0.85rem;
   overflow: hidden;
 }
 
 .contract-body,
-.ref-body {
+.lore-body {
   padding: 0.72rem;
   background: #e9edf7;
 }
@@ -703,18 +703,6 @@ img {
 .mission-card-body img {
   width: 100%;
   border: 1px solid #8f98ad;
-}
-
-.ref-source a,
-.footer-meta a {
-  text-decoration: underline;
-}
-
-.ref-links {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
 }
 
 .stats-grid {
@@ -826,11 +814,6 @@ img {
 .footer-note {
   margin-top: 0.5rem !important;
   font-size: 0.88rem;
-}
-
-.footer-meta {
-  margin-top: 0.38rem !important;
-  font-size: 0.82rem;
 }
 
 .status-bar {

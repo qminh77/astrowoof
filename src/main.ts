@@ -41,16 +41,6 @@ const mascotImage = "/astrowoof-hero.jpg";
 const sloganImage = "/astrowoof-slogan.jpg";
 const astroWoofContract = "TBA";
 
-const asteroidReference = {
-  source: "https://asteroideth.site",
-  contract: "0xAFF2565091E7207191dBe340B8528D02FA78d044",
-  telegram: "https://t.me/asteroid_OG",
-  x: "https://x.com/asteroidfanog",
-  dex: "https://dexscreener.com/ethereum/0x7Dfc9DD51638573a812b39d33EDed20Df468E7bC",
-  uniswap:
-    "https://app.uniswap.org/swap?&chain=eth&use=v2&outputCurrency=0xaff2565091e7207191dbe340b8528d02fa78d044&inputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-};
-
 const tokenStats: TokenStat[] = [
   {
     label: "Ticker",
@@ -323,26 +313,17 @@ app.innerHTML = `
                 </article>
               </div>
 
-              <article class="window ref-window">
-                ${renderTitleBar("Asteroid_Reference.exe", "Source Data")}
-                <div class="ref-body">
-                  <p class="ref-source">
-                    Referenced from:
-                    <a href="${asteroidReference.source}" target="_blank" rel="noreferrer">${asteroidReference.source}</a>
+              <article class="window lore-window">
+                ${renderTitleBar("Astrowoof_Thesis.exe", "Lore")}
+                <div class="lore-body">
+                  <p>
+                    $ASTROWOOF is built for internet culture first: a pure community takeover with simple token rules,
+                    meme-driven growth, and no fake corporate roadmap energy.
                   </p>
                   <p>
-                    OG thesis context from that project: Liv Perrotto designed the Shiba plush "Asteroid" as zero-g
-                    indicator for Polaris Dawn, which became a big part of the narrative on crypto social.
+                    The plan is straightforward: keep the community active, keep content shipping daily, and make every
+                    new holder understand the vibe in under one minute.
                   </p>
-                  <p>
-                    We use that structure as inspiration here for clear buy flow, social links, contract block, and
-                    lore-style storytelling.
-                  </p>
-                  <div class="ref-links">
-                    <a class="button" href="${asteroidReference.telegram}" target="_blank" rel="noreferrer">Asteroid TG</a>
-                    <a class="button" href="${asteroidReference.x}" target="_blank" rel="noreferrer">Asteroid X</a>
-                    <a class="button" href="${asteroidReference.dex}" target="_blank" rel="noreferrer">Asteroid Dex</a>
-                  </div>
                 </div>
               </article>
             </div>
@@ -397,14 +378,6 @@ app.innerHTML = `
                       ${astroWoofContract === "TBA" ? "Awaiting CA" : "Copy CA"}
                     </button>
                   </div>
-
-                  <p class="contract-label">Reference OG Asteroid Contract</p>
-                  <div class="copy-row">
-                    <code class="copy-value">${asteroidReference.contract}</code>
-                    <button type="button" class="button copy-button" data-copy-value="${asteroidReference.contract}">
-                      Copy Reference CA
-                    </button>
-                  </div>
                 </div>
               </article>
             </div>
@@ -440,15 +413,16 @@ app.innerHTML = `
                 <span>ETH Network</span>
                 <span>0 / 0 Tax</span>
                 <span>Renounced Ownership</span>
+                <span>LP Burnt</span>
                 <span>Community Driven</span>
               </div>
 
               <div class="buy-action-row">
-                <a class="button" href="${asteroidReference.uniswap}" target="_blank" rel="noreferrer">
-                  Reference OG Swap Link
+                <a class="button" href="https://app.uniswap.org/swap" target="_blank" rel="noreferrer">
+                  Buy On Uniswap
                 </a>
-                <a class="button" href="${asteroidReference.dex}" target="_blank" rel="noreferrer">
-                  Reference DexScreener
+                <a class="button" href="https://t.me/AstrowoofERC" target="_blank" rel="noreferrer">
+                  Join Telegram
                 </a>
               </div>
             </div>
@@ -511,20 +485,6 @@ app.innerHTML = `
                   )
                   .join("")}
               </div>
-
-              <article class="window ref-window">
-                ${renderTitleBar("OG_Asteroid_Channels.exe", "Reference")}
-                <div class="ref-body">
-                  <p>
-                    Quick reference channels from the source project for benchmarking structure and content flow.
-                  </p>
-                  <div class="ref-links">
-                    <a class="button" href="${asteroidReference.telegram}" target="_blank" rel="noreferrer">OG Telegram</a>
-                    <a class="button" href="${asteroidReference.x}" target="_blank" rel="noreferrer">OG X</a>
-                    <a class="button" href="${asteroidReference.dex}" target="_blank" rel="noreferrer">OG Dex</a>
-                  </div>
-                </div>
-              </article>
             </div>
           </section>
         </section>
@@ -534,7 +494,6 @@ app.innerHTML = `
         ${renderTitleBar("Token_Info.txt", "Final Readout")}
         <div class="footer-body">
           <p><strong>$ASTROWOOF</strong> • Ethereum • Supply 1,000,000,000 • Tax 0/0 • Ownership Renounced</p>
-          <p class="footer-meta">Reference structure: <a href="${asteroidReference.source}" target="_blank" rel="noreferrer">${asteroidReference.source}</a></p>
           <p class="footer-note">© <span data-year></span> $ASTROWOOF</p>
         </div>
       </footer>
