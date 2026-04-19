@@ -1,0 +1,2955 @@
+<!DOCTYPE html><!-- Handled by Exflow.site -->
+<html data-wf-page="697419cc5592c9fe72667be3" data-wf-site="697419cb5592c9fe72667bc7" lang="en" class=" w-mod-js">
+
+<head>
+  <meta charset="utf-8">
+  <title>Asteroid</title>
+
+
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/wojakk.webflow.shared.cd095b43e.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Permanent+Marker&display=swap"
+    rel="stylesheet">
+
+  <script
+    type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
+  <link href="/loo.png" rel="shortcut icon" type="image/x-icon">
+  <link href="/loo.png" rel="apple-touch-icon">
+  <style>
+    /* ==============================================
+     GLOBAL FONT OVERRIDE - Helvetica
+     ============================================== */
+    * {
+      font-family: 'Gloria Hallelujah', cursive !important;
+    }
+
+    /* Preserve icon fonts */
+    .w-icon-dropdown-toggle,
+    .w-icon-file-upload-remove,
+    .w-icon-nav-menu,
+    [class*="webflow-icons"] {
+      font-family: webflow-icons !important;
+    }
+
+    /* ==============================================
+     BULLETPROOF CUSTOM CURSOR - Nuclear Option
+     ============================================== */
+
+    /* Kill native cursor on EVERYTHING - highest specificity */
+    html,
+    html *,
+    body,
+    body *,
+    *,
+    *::before,
+    *::after,
+    *:hover,
+    *:focus,
+    *:active,
+    *:visited,
+    a,
+    a:hover,
+    a:focus,
+    a:active,
+    button,
+    button:hover,
+    input,
+    textarea,
+    select,
+    [class],
+    [id],
+    [style],
+    img,
+    svg,
+    video,
+    canvas,
+    iframe,
+    div,
+    span,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      cursor: none !important;
+    }
+
+    /* Target html element directly for scrollbar area */
+    html {
+      cursor: none !important;
+    }
+
+    /* Override any inline styles */
+    [style*="cursor"] {
+      cursor: none !important;
+    }
+
+    /* Custom cursor element */
+    #fakeCursor {
+      position: fixed;
+      width: 48px;
+      height: 48px;
+      background: #fff url("/D__4_-removebg-preview.png") center/contain no-repeat;
+      pointer-events: none;
+      z-index: 2147483647;
+      /* Max z-index */
+      border-radius: 50%;
+      border: 2px solid #000;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+      transform: translate(-50%, -50%);
+      will-change: left, top;
+      top: -100px;
+      left: -100px;
+      transition: opacity 0.15s ease;
+    }
+
+    /* Hide fake cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      #fakeCursor {
+        display: none !important;
+      }
+    }
+
+    /* ==============================================
+     INLINE LINK STYLES - How to Buy Section
+     ============================================== */
+    .paragraph a.inline-link,
+    .paragraph a.inline-link[data-brand] {
+      color: #000 !important;
+      text-decoration: underline !important;
+      font-weight: 700 !important;
+      border-bottom: none !important;
+      text-shadow: none !important;
+      transition: opacity 0.2s ease;
+    }
+
+    .paragraph a.inline-link:hover,
+    .paragraph a.inline-link[data-brand]:hover {
+      color: #000 !important;
+      opacity: 0.7;
+      text-shadow: none !important;
+    }
+
+    /* ==============================================
+     FIXED NAVIGATION - Scroll-Triggered Header
+     ============================================== */
+    .wojak-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      height: 70px;
+      background: transparent;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .wojak-nav.visible {
+      transform: translateY(0);
+    }
+
+    /* Nav Left - Music Button */
+    .nav-left {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .nav-music-btn {
+      width: 45px;
+      height: 45px;
+      background: #000 !important;
+      border: 2px solid #000 !important;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      overflow: hidden;
+    }
+
+    .nav-music-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, 0.8) !important;
+      border-color: #000 !important;
+    }
+
+    .nav-music-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Main fullscreen music button - black with white icon */
+    .div-block-22 {
+      background: #000 !important;
+      border: 2px solid #000 !important;
+      border-radius: 10px !important;
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      cursor: pointer !important;
+      width: 60px !important;
+      height: 60px !important;
+      padding: 8px !important;
+    }
+
+    .music-btn {
+      filter: grayscale(100%) invert(1) brightness(2) !important;
+      width: 36px !important;
+      height: 36px !important;
+    }
+
+    .nav-music-btn img {
+      width: 24px;
+      height: 24px;
+      filter: grayscale(100%) invert(1) brightness(2) !important;
+      filter: brightness(1.2);
+    }
+
+    /* Nav Center - Logo */
+    .nav-center {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .nav-logo-text {
+      font-family: 'Gloria Hallelujah', cursive !important;
+      font-size: 28px !important;
+      font-weight: 900 !important;
+      color: #000 !important;
+      text-shadow:
+        2px 2px 0 #fff,
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        0 3px 0 rgba(0, 0, 0, 0.2) !important;
+      letter-spacing: 0.02em !important;
+      white-space: nowrap !important;
+      transition: all 0.3s ease;
+      animation: nav-logo-float 3s ease-in-out infinite;
+    }
+
+    .nav-logo-text:hover {
+      transform: scale(1.1);
+      text-shadow:
+        2px 2px 0 #fff,
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        0 4px 0 rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    @keyframes nav-logo-float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-2px);
+      }
+    }
+
+    /* Nav Right - Social Icons */
+    .nav-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .nav-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      padding: 4px;
+    }
+
+    .nav-social::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .nav-social img {
+      width: 28px;
+      height: 28px;
+      transition: all 0.3s ease;
+      filter: grayscale(0.3) brightness(0.9);
+    }
+
+    /* Quirky off-axis rotations - cartoon meme feel */
+    .nav-social.telegram {
+      transform: rotate(-4deg);
+    }
+
+    .nav-social.twitter {
+      transform: rotate(3deg);
+    }
+
+    .nav-social.etherscan {
+      transform: rotate(-5deg);
+    }
+
+    .nav-social.dexscreener {
+      transform: rotate(4deg);
+    }
+
+    .nav-social:hover {
+      transform: translateY(-4px) scale(1.1) rotate(0deg);
+    }
+
+    .nav-social:hover img {
+      filter: grayscale(0) brightness(1.1);
+    }
+
+    /* Telegram - Blue bounce */
+    .nav-social.telegram {
+      background: #ffffff;
+      border: 2px solid #000;
+      box-shadow: 0 3px 0 #000, 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-social.telegram:hover {
+      box-shadow: 0 5px 0 #000, 0 0 20px rgba(0, 0, 0, 0.2);
+      animation: telegram-bounce 0.5s ease;
+    }
+
+    .nav-social.telegram img {
+      filter: none;
+    }
+
+    /* X/Twitter - White bg black border */
+    .nav-social.twitter {
+      background: #ffffff;
+      border: 2px solid #000;
+      box-shadow: 0 3px 0 #000, 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-social.twitter:hover {
+      box-shadow: 0 5px 0 #000, 0 0 20px rgba(0, 0, 0, 0.2);
+      animation: twitter-shake 0.4s ease;
+    }
+
+    .nav-social.twitter img {
+      filter: none;
+    }
+
+    /* Etherscan - Light blue glow */
+    .nav-social.etherscan {
+      background: linear-gradient(145deg, #a8d4f0, #8ec5e8);
+      box-shadow: 0 3px 0 #6ba8cc, 0 0 10px rgba(168, 212, 240, 0.4);
+    }
+
+    .nav-social.etherscan:hover {
+      box-shadow: 0 5px 0 #6ba8cc, 0 0 25px rgba(168, 212, 240, 0.7);
+      animation: etherscan-pulse 0.5s ease;
+    }
+
+    .nav-social.etherscan img {
+      filter: brightness(0.2);
+      /* Darken icon for light background */
+    }
+
+    /* DexScreener - Gray spin */
+    .nav-social.dexscreener {
+      background: #ffffff;
+      border: 2px solid #000;
+      box-shadow: 0 3px 0 #000, 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-social.dexscreener:hover {
+      box-shadow: 0 5px 0 #000, 0 0 20px rgba(0, 0, 0, 0.2);
+      animation: dex-wiggle 0.4s ease;
+    }
+
+    .nav-social.dexscreener img {
+      filter: none;
+    }
+
+    /* ==============================================
+     WOJAK MARQUEE BANNER - Infinite Scroll
+     ============================================== */
+    .wojak-marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+      /* Black borders */
+      border-top: 4px solid #000;
+      border-bottom: 4px solid #000;
+      box-shadow:
+        inset 0 8px 16px rgba(0, 0, 0, 0.15),
+        inset 0 -8px 16px rgba(0, 0, 0, 0.15);
+      /* Pure white background */
+      background: #ffffff;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: fit-content;
+      animation: marquee-scroll 45s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 80px;
+      padding: 0 40px;
+    }
+
+    .marquee-item {
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      overflow: hidden;
+      /* Black border container */
+      background: #fff;
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .marquee-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Popout heads - same size as marquee items with borders */
+    .wojak-heads .image-10 {
+      width: 100px !important;
+      height: 100px !important;
+      border: 3px solid #000 !important;
+      border-radius: 8px !important;
+      background: #fff !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+      object-fit: cover !important;
+      display: block !important;
+      position: absolute !important;
+    }
+
+    /* CSS Animations for all heads */
+    @keyframes popout1 {
+
+      0%,
+      100% {
+        transform: translate3d(-150px, 0, 0) rotateZ(65deg);
+      }
+
+      50% {
+        transform: translate3d(20px, 0, 0) rotateZ(65deg);
+      }
+    }
+
+    @keyframes popout2 {
+
+      0%,
+      100% {
+        transform: translate3d(150px, 0, 0) rotateZ(-84deg);
+      }
+
+      50% {
+        transform: translate3d(-20px, 0, 0) rotateZ(-84deg);
+      }
+    }
+
+    @keyframes popout3 {
+
+      0%,
+      100% {
+        transform: translate3d(0, 150px, 0) rotateZ(1deg);
+      }
+
+      50% {
+        transform: translate3d(0, -20px, 0) rotateZ(1deg);
+      }
+    }
+
+    @keyframes popout4 {
+
+      0%,
+      100% {
+        transform: translate3d(0, 150px, 0) rotateZ(169deg);
+      }
+
+      50% {
+        transform: translate3d(0, -20px, 0) rotateZ(169deg);
+      }
+    }
+
+    @keyframes popout5 {
+
+      0%,
+      100% {
+        transform: translate3d(-150px, 0, 0) rotateZ(25deg);
+      }
+
+      50% {
+        transform: translate3d(20px, 0, 0) rotateZ(25deg);
+      }
+    }
+
+    @keyframes popout6 {
+
+      0%,
+      100% {
+        transform: translate3d(150px, 0, 0) rotateZ(-42deg);
+      }
+
+      50% {
+        transform: translate3d(-20px, 0, 0) rotateZ(-42deg);
+      }
+    }
+
+    @keyframes popout7 {
+
+      0%,
+      100% {
+        transform: translate3d(-150px, 50px, 0) rotateZ(15deg);
+      }
+
+      50% {
+        transform: translate3d(20px, 50px, 0) rotateZ(15deg);
+      }
+    }
+
+    @keyframes popout8 {
+
+      0%,
+      100% {
+        transform: translate3d(150px, -40px, 0) rotateZ(-30deg);
+      }
+
+      50% {
+        transform: translate3d(-20px, -40px, 0) rotateZ(-30deg);
+      }
+    }
+
+    /* Head positions and animations */
+    .wojak-heads .image-10.wojak-head1 {
+      inset: 12% auto auto 0% !important;
+      animation: popout1 4s ease-in-out infinite !important;
+    }
+
+    .wojak-heads .image-10.head2 {
+      inset: 23% 0% auto auto !important;
+      animation: popout2 5s ease-in-out infinite 0.5s !important;
+    }
+
+    .wojak-heads .image-10.head3 {
+      inset: auto auto -2% 10% !important;
+      animation: popout3 4.5s ease-in-out infinite 1s !important;
+    }
+
+    .wojak-heads .image-10.head4 {
+      inset: auto 25% -2% auto !important;
+      animation: popout4 5.5s ease-in-out infinite 1.5s !important;
+    }
+
+    .wojak-heads .image-10.head5 {
+      inset: auto auto 40% -2% !important;
+      animation: popout5 4s ease-in-out infinite 2s !important;
+    }
+
+    .wojak-heads .image-10.head6 {
+      inset: auto -1% -1% auto !important;
+      animation: popout6 5s ease-in-out infinite 2.5s !important;
+    }
+
+    .wojak-heads .image-10.head7 {
+      inset: 75% auto auto 0% !important;
+      animation: popout7 4.5s ease-in-out infinite 3s !important;
+    }
+
+    .wojak-heads .image-10.head8 {
+      inset: 60% 0% auto auto !important;
+      animation: popout8 5.5s ease-in-out infinite 3.5s !important;
+    }
+
+    @media screen and (max-width: 767px) {
+      .wojak-heads .image-10 {
+        width: 60px !important;
+        height: 60px !important;
+      }
+    }
+
+    .marquee-item:nth-child(6n+4) {
+      --rotation: 3deg;
+    }
+
+    .marquee-item:nth-child(6n+5) {
+      --rotation: -4deg;
+    }
+
+    .marquee-item:nth-child(6n+6) {
+      --rotation: 5deg;
+    }
+
+    .marquee-item:hover {
+      transform: rotate(0deg) scale(1.15);
+      box-shadow:
+        8px 8px 20px rgba(0, 0, 0, 0.6),
+        -6px -6px 15px rgba(255, 255, 255, 0.12),
+        inset 0 0 0 3px rgba(255, 255, 255, 0.2),
+        0 0 30px rgba(255, 255, 255, 0.15);
+      z-index: 10;
+    }
+
+    .marquee-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(1.1) contrast(1.05);
+      transition: all 0.3s ease;
+    }
+
+    .marquee-item:hover img {
+      filter: saturate(1.2) contrast(1.1) brightness(1.1);
+    }
+
+    /* Marquee edge fade for seamless look */
+    .wojak-marquee::before,
+    .wojak-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .wojak-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
+    }
+
+    .wojak-marquee::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
+    }
+
+    /* Responsive - Tablet */
+    @media screen and (max-width: 768px) {
+      .wojak-marquee {
+        padding: 15px 0;
+      }
+
+      .marquee-group {
+        gap: 50px;
+        padding: 0 25px;
+      }
+
+      .marquee-item {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+      }
+
+      .marquee-track {
+        animation-duration: 35s;
+      }
+
+      .wojak-marquee::before,
+      .wojak-marquee::after {
+        width: 50px;
+      }
+    }
+
+    /* Responsive - Mobile */
+    @media screen and (max-width: 480px) {
+      .wojak-marquee {
+        padding: 12px 0;
+      }
+
+      .marquee-group {
+        gap: 35px;
+        padding: 0 18px;
+      }
+
+      .marquee-item {
+        width: 65px;
+        height: 65px;
+        border-radius: 10px;
+      }
+
+      .marquee-track {
+        animation-duration: 28s;
+      }
+
+      .wojak-marquee::before,
+      .wojak-marquee::after {
+        width: 30px;
+      }
+    }
+
+    /* ==============================================
+     COPY TO CLIPBOARD BUTTON
+     ============================================== */
+    .copy-ca-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      gap: 12px;
+      padding: 18px 36px;
+      margin-top: 15px;
+      background: linear-gradient(145deg, #4a4a4a, #2a2a2a);
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      text-decoration: none;
+      box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+      transform: rotate(-2deg);
+    }
+
+    .copy-ca-btn:hover {
+      transform: rotate(0deg) scale(1.05) translateY(-2px);
+      box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(125, 211, 252, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      border-color: rgba(125, 211, 252, 0.5);
+      color: #7dd3fc;
+    }
+
+    .copy-ca-btn:active {
+      transform: rotate(0deg) scale(1) translateY(2px);
+      box-shadow:
+        0 2px 0 rgba(0, 0, 0, 0.4),
+        0 0 15px rgba(125, 211, 252, 0.2);
+    }
+
+    .copy-ca-btn.copied {
+      background: linear-gradient(145deg, #2d5a2d, #1a3a1a);
+      border-color: rgba(86, 211, 102, 0.5);
+      color: #56d366;
+      box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(86, 211, 102, 0.3);
+    }
+
+    .copy-ca-btn svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .copy-ca-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        gap: 6px;
+      }
+
+      .copy-ca-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .copy-ca-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+
+      .copy-ca-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    /* Disable pointer events on decorative images */
+    img[src*="gemini_generated_image_v6ld8v6ld8v6ld8v-20copy-202-1"] {
+      pointer-events: none;
+    }
+
+    /* ==============================================
+     PARALLAX SCROLL ANIMATIONS
+     ============================================== */
+    .parallax-grow,
+    .parallax-slide-right {
+      transition: transform 0.1s ease-out !important;
+      will-change: transform;
+    }
+
+    /* CA section image - ensure parallax works with absolute positioning */
+    img.image-15.parallax-slide-right {
+      transform-origin: center center;
+      transition: transform 0.15s ease-out !important;
+    }
+
+    /* Hero $WOJAK text parallax - scroll down effect */
+    .div-block-2.parallax-text-down {
+      transition: transform 0.1s ease-out !important;
+      will-change: transform;
+    }
+
+    /* Hero $WOJAK text logo */
+    .wojak-logo-text {
+      font-family: 'Gloria Hallelujah', cursive !important;
+      font-size: 12vw !important;
+      font-weight: 900 !important;
+      color: #000 !important;
+      text-shadow:
+        4px 4px 0 #fff,
+        -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff,
+        0 6px 0 rgba(0, 0, 0, 0.3) !important;
+      letter-spacing: 0.02em !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      white-space: nowrap !important;
+      text-align: center !important;
+      position: absolute !important;
+      width: 100% !important;
+      transition: transform 0.1s ease-out !important;
+      will-change: transform !important;
+    }
+
+    @media screen and (max-width: 991px) {
+      .wojak-logo-text {
+        font-size: 14vw !important;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .wojak-logo-text {
+        font-size: 16vw !important;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      .wojak-logo-text {
+        font-size: 18vw !important;
+      }
+    }
+
+    /* Hero Wojak character parallax - scroll up + grow */
+    /* Hero section - contain elements */
+    section.section {
+      overflow: hidden !important;
+    }
+
+    /* Wojak tree image - reduced size, behind other elements */
+    img.image-4 {
+      width: 69% !important;
+      left: 15% !important;
+      z-index: 1 !important;
+      display: block !important;
+    }
+
+    img.image-4.parallax-wojak-up {
+      transition: transform 0.1s ease-out !important;
+      will-change: transform;
+    }
+
+    /* Mobile hero section - NUCLEAR FIX */
+    @media screen and (max-width: 479px) {
+
+      /* Main section - reduced height */
+      section.section {
+        height: 60vh !important;
+        min-height: 60vh !important;
+        max-height: 60vh !important;
+        overflow: hidden !important;
+        background: #fff !important;
+      }
+
+      /* Container wrapper */
+      .w-layout-blockcontainer.container.w-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 60vh !important;
+        min-height: 60vh !important;
+        position: relative !important;
+        overflow: hidden !important;
+      }
+
+      /* THE PROBLEM DIV-BLOCK - completely reset */
+      section.section .div-block,
+      .container .div-block,
+      .w-container .div-block,
+      .div-block {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 140vh !important;
+        min-height: 60vh !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: auto !important;
+        flex-flow: column !important;
+        overflow: hidden !important;
+        display: block !important;
+      }
+
+      /* Background image - cover the section */
+      section.section .div-block .image,
+      .div-block>.image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        object-fit: cover !important;
+        inset: 0 !important;
+      }
+
+      /* Tree image - visible, centered */
+      section.section .div-block .image-4,
+      .div-block>.image-4,
+      img.image-4 {
+        width: 60% !important;
+        max-width: 60% !important;
+        height: auto !important;
+        display: block !important;
+        position: absolute !important;
+        z-index: 2 !important;
+        top: 20% !important;
+        left: 20% !important;
+        right: 20% !important;
+        bottom: auto !important;
+        inset: 20% 20% auto 20% !important;
+      }
+
+      /* WOJAK letters - match tablet exactly, moved down */
+      section.section .div-block-2,
+      .container .div-block-2 {
+        z-index: 30 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        position: absolute !important;
+        inset: auto 0% 20% 0% !important;
+        top: auto !important;
+        bottom: 20% !important;
+        height: auto !important;
+        padding: 0 !important;
+      }
+
+      /* WOJAK logo text - mobile styling */
+      .wojak-logo-text {
+        font-size: 16vw !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+      }
+
+      /* Hide gradient overlays */
+      .div-block-4,
+      .div-block-4.desktop {
+        display: none !important;
+      }
+
+      /* Hide phone images */
+      .divdiv.duvduv1,
+      .divdiv.dicv2 {
+        display: none !important;
+      }
+
+      /* Button container - fixed at bottom of hero area */
+      .div-block-5>.button---dic,
+      .button---dic {
+        position: fixed !important;
+        bottom: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        top: auto !important;
+        right: auto !important;
+        z-index: 9999 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .button---dic .link-block {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: 80px !important;
+        width: 180px !important;
+      }
+
+      .button---dic .div-block-3 {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    }
+
+    /* Hide Elfsight widget UI - we use custom buttons */
+    .elfsight-hidden,
+    [class*="elfsight-app-"] {
+      position: fixed !important;
+      bottom: -9999px !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      z-index: -9999 !important;
+    }
+
+    /* ==============================================
+     RESPONSIVE: Under 1250px
+     - Disable ALL parallax animations
+     - Smaller phone device images
+     ============================================== */
+    @media screen and (max-width: 1250px) {
+
+      /* Disable parallax transforms - reset to static (except text logo) */
+      .parallax-grow,
+      .parallax-slide-right,
+      .parallax-wojak-up,
+      img.image-4,
+      img.image-15,
+      img.image-19 {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+        animation: none !important;
+      }
+
+      /* Phone images under 1400px - both moved down */
+    }
+
+    @media screen and (max-width: 1400px) {
+      .divdiv.duvduv1 {
+        /* Right side - move down more */
+        inset: 0% 3% -30% auto !important;
+      }
+
+      .divdiv.dicv2 {
+        /* Left side - move down slightly */
+        inset: 0% auto -170% 5% !important;
+      }
+    }
+
+    @media screen and (max-width: 1250px) {
+
+      .image-6,
+      .image-7 {
+        width: 11em !important;
+      }
+
+      .divdiv.duvduv1 {
+        /* Right side - move down more */
+        transform: scale(0.8);
+        inset: 0% 3% -40% auto !important;
+      }
+
+      .divdiv.dicv2 {
+        /* Left side - move down slightly */
+        transform: scale(0.8);
+        inset: 0% auto -200% 5% !important;
+      }
+    }
+
+    /* Even smaller phones on tablet */
+    @media screen and (max-width: 991px) {
+
+      .image-6,
+      .image-7 {
+        width: 9em !important;
+      }
+
+      .divdiv.duvduv1 {
+        /* Right side - move down more */
+        transform: scale(0.7);
+        inset: 0% 3% -50% auto !important;
+      }
+
+      .divdiv.dicv2 {
+        /* Left side - move down slightly */
+        transform: scale(0.7);
+        inset: 0% auto -240% 5% !important;
+      }
+    }
+
+    /* Smallest on mobile */
+    @media screen and (max-width: 767px) {
+
+      .image-6,
+      .image-7 {
+        width: 7em !important;
+      }
+
+      .divdiv.duvduv1 {
+        /* Right side - move down more */
+        transform: scale(0.6);
+        inset: 0% 3% -60% auto !important;
+      }
+
+      .divdiv.dicv2 {
+        /* Left side - move down slightly */
+        transform: scale(0.6);
+        inset: 0% auto -300% 5% !important;
+      }
+    }
+
+    /* Section2 Header */
+    .section2-header {
+      color: #000 !important;
+      font-size: 48px !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      margin: 0 0 40px 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Section2 - white theme with 2-column layout - FULL OVERRIDE */
+    section.section2 {
+      overflow: hidden !important;
+      background: #ffffff !important;
+      padding: 60px 40px !important;
+      min-height: auto !important;
+      position: relative !important;
+      display: block !important;
+    }
+
+    section.section2 .image-20 {
+      display: none !important;
+    }
+
+    .section2-inner {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 40px !important;
+      width: 100% !important;
+      max-width: 1000px !important;
+      margin: 0 auto !important;
+      align-items: center !important;
+    }
+
+    .section2-image-col {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .section2-image-col img {
+      width: 100% !important;
+      max-width: 450px !important;
+      height: auto !important;
+      border: 4px solid #000 !important;
+      border-radius: 16px !important;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .section2-links-col {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    /* Social link buttons - FULL OVERRIDE of absolute positioning */
+    section.section2 .div-block-19 {
+      position: static !important;
+      inset: auto !important;
+      top: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+      padding: 0 !important;
+      padding-top: 0 !important;
+      z-index: 10 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      width: auto !important;
+      grid-template-columns: none !important;
+      grid-template-rows: none !important;
+    }
+
+    section.section2 .link-block-2 {
+      width: 100% !important;
+    }
+
+    section.section2 .div-block-20 {
+      background: #ffffff !important;
+      border: 3px solid #000 !important;
+      border-radius: 12px !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+      padding: 12px 24px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    section.section2 .div-block-20:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    section.section2 .image-21 {
+      width: 32px !important;
+      height: 32px !important;
+      position: static !important;
+    }
+
+    section.section2 .heading-9 {
+      color: #000 !important;
+      text-shadow: none !important;
+      font-size: 18px !important;
+      margin: 0 !important;
+      position: static !important;
+    }
+
+    @media screen and (max-width: 991px) {
+      .section2-header {
+        font-size: 36px !important;
+        margin-bottom: 30px !important;
+      }
+
+      section.section2 {
+        padding: 40px 20px !important;
+      }
+
+      .section2-inner {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+      }
+
+      .section2-image-col img {
+        max-width: 350px !important;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .section2-header {
+        font-size: 28px !important;
+        margin-bottom: 25px !important;
+      }
+    }
+
+    /* How to Buy section - white theme */
+    section.section---how-to-buy {
+      background: #ffffff !important;
+      background-image: none !important;
+      border-bottom: 4px solid #000 !important;
+    }
+
+    /* How to Buy - Tablet responsive */
+    @media screen and (max-width: 991px) {
+      .section---how-to-buy .collection-list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        grid-template-columns: 1fr !important;
+      }
+
+      .section---how-to-buy .collection-item-main {
+        width: 100% !important;
+        max-width: 500px !important;
+        display: flex !important;
+        justify-content: center !important;
+      }
+
+      .section---how-to-buy .howtodiv {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 450px !important;
+      }
+
+      .section---how-to-buy .howtodiv .heading,
+      .section---how-to-buy .howtodiv .paragraph {
+        text-align: center !important;
+      }
+    }
+
+    /* Add space below step 4 content */
+    .section---how-to-buy .collection-item-main:last-child {
+      margin-bottom: 200px !important;
+    }
+
+    /* CA section white background */
+    section.addy {
+      background: #ffffff !important;
+      background-image: none !important;
+      min-height: 900px !important;
+      height: auto !important;
+      position: relative !important;
+    }
+
+    /* Bottom gradient fade on CA section */
+    section.addy::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 150px !important;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%) !important;
+      pointer-events: none !important;
+      z-index: 50 !important;
+    }
+
+    /* ==============================================
+     LORE SECTION
+     ============================================== */
+    .lore-section {
+      background: #ffffff;
+      padding: 80px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lore-container {
+      max-width: 900px;
+      width: 100%;
+      background: #ffffff;
+      border: 4px solid #000;
+      border-radius: 16px;
+      padding: 50px 60px;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.8);
+    }
+
+    .lore-title {
+      color: #000;
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 30px 0;
+      text-align: center;
+    }
+
+    .lore-text {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 0 0 25px 0;
+      text-align: justify;
+    }
+
+    .lore-tagline {
+      color: #000;
+      font-size: 18px;
+      font-weight: 700;
+      font-style: italic;
+      margin: 0;
+      text-align: center;
+      padding-top: 20px;
+      border-top: 2px solid #000;
+    }
+
+    /* Responsive lore section */
+    @media screen and (max-width: 991px) {
+      .lore-section {
+        padding: 60px 30px;
+      }
+
+      .lore-container {
+        padding: 40px 35px;
+      }
+
+      .lore-title {
+        font-size: 36px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .lore-section {
+        padding: 50px 20px;
+      }
+
+      .lore-container {
+        padding: 30px 25px;
+        border-radius: 12px;
+      }
+
+      .lore-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .lore-text {
+        font-size: 14px;
+        text-align: left;
+      }
+
+      .lore-tagline {
+        font-size: 16px;
+      }
+    }
+
+    /* Top gradient fade on bottom section */
+    .div-block-21 {
+      position: relative !important;
+      background: #ffffff !important;
+    }
+
+    .div-block-21::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 150px !important;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%) !important;
+      pointer-events: none !important;
+      z-index: 10 !important;
+    }
+
+    /* Remove gradient overlay on CA section */
+    section.addy .div-block-13 {
+      display: none !important;
+    }
+
+    /* Wojak punch image - fixed to bottom of section */
+    section.addy .image-15 {
+      z-index: 1 !important;
+      inset: auto 0% 0% 0% !important;
+      top: auto !important;
+      bottom: 0 !important;
+      width: 80% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      object-fit: contain !important;
+      object-position: bottom center !important;
+    }
+
+    /* CA content above image - positioned at top */
+    section.addy .txttt {
+      z-index: 100 !important;
+      position: absolute !important;
+      inset: 40px auto auto 40px !important;
+      top: 40px !important;
+      left: 40px !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: calc(100% - 80px) !important;
+      padding: 40px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Ensure div-block-12 container fills section */
+    section.addy .div-block-12 {
+      min-height: 900px !important;
+      height: 100% !important;
+      align-items: flex-start !important;
+    }
+
+    /* CA section headings - black and white scheme */
+    section.addy .heading-7 {
+      color: #000 !important;
+      text-shadow: none !important;
+    }
+
+    section.addy .heading-7.caa {
+      color: #000 !important;
+      text-shadow: none !important;
+      background: #fff !important;
+      padding: 12px 20px !important;
+      border: 3px solid #000 !important;
+      border-radius: 8px !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Badge container - flex wrap for multiple badges */
+    section.addy .div-block-16 {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 12px !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      position: relative !important;
+      z-index: 100 !important;
+    }
+
+    section.addy .div-block-16>div {
+      flex-shrink: 0 !important;
+    }
+
+    section.addy .heading-8 {
+      color: #000 !important;
+      text-shadow: none !important;
+      background: #fff !important;
+      background-color: #fff !important;
+      border: 3px solid #000 !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+      font-size: 14px !important;
+      padding: 10px 16px !important;
+      margin: 0 !important;
+      white-space: nowrap !important;
+      display: inline-block !important;
+    }
+
+    section.addy .heading-8:hover {
+      background: #f0f0f0 !important;
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Badge links */
+    .badge-link {
+      text-decoration: none !important;
+      display: inline-block !important;
+    }
+
+    .badge-link:hover .heading-8 {
+      background: #f0f0f0 !important;
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Buy Wojak button - desaturated black and white */
+    .link-block {
+      border: 3px solid #000 !important;
+      border-radius: 12px !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+      overflow: hidden !important;
+      background: #fff !important;
+      transition: all 0.2s ease !important;
+      height: 120px !important;
+    }
+
+    .link-block .button-1,
+    .link-block .button-2,
+    .link-block img {
+      filter: grayscale(100%) brightness(1.2) contrast(3) !important;
+      transition: filter 0.2s ease !important;
+    }
+
+    .link-block:hover {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8) !important;
+      background: #000 !important;
+    }
+
+    .link-block:hover .button-1,
+    .link-block:hover .button-2,
+    .link-block:hover img {
+      filter: grayscale(100%) brightness(1.2) contrast(3) invert(1) !important;
+    }
+
+    /* Smaller desktop - CA section badges */
+    @media screen and (max-width: 1250px) {
+      section.addy .div-block-16 {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px !important;
+      }
+
+      section.addy .heading-8 {
+        font-size: 13px !important;
+        padding: 8px 14px !important;
+      }
+    }
+
+    /* Tablet responsive - CA section */
+    @media screen and (max-width: 991px) {
+      section.addy .div-block-16 {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+      }
+
+      section.addy .div-block-16>div {
+        width: auto !important;
+        flex-shrink: 0 !important;
+      }
+
+      section.addy .heading-8 {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: none !important;
+      }
+
+      section.addy .txttt {
+        left: 15px !important;
+        right: 15px !important;
+        width: calc(100% - 30px) !important;
+        padding: 25px 15px !important;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      section.addy .div-block-16 {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 8px !important;
+      }
+
+      section.addy .div-block-16>div {
+        width: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+      }
+
+      section.addy .heading-8 {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: none !important;
+      }
+
+      section.addy .txttt {
+        left: 10px !important;
+        right: 10px !important;
+        width: calc(100% - 20px) !important;
+        padding: 20px 10px !important;
+        align-items: center !important;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      section.addy .div-block-16 {
+        gap: 6px !important;
+      }
+
+      section.addy .heading-8 {
+        font-size: 10px !important;
+        padding: 6px 8px !important;
+        border-width: 2px !important;
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8) !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: none !important;
+      }
+
+      section.addy .txttt {
+        left: 5px !important;
+        right: 5px !important;
+        width: calc(100% - 10px) !important;
+        padding: 15px 5px !important;
+      }
+    }
+
+    /* Copy CA button - black and white */
+    section.addy .copy-ca-btn {
+      background: #fff !important;
+      color: #000 !important;
+      border: 3px solid #000 !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    section.addy .copy-ca-btn:hover {
+      background: #f0f0f0 !important;
+      transform: translate(2px, 2px) !important;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Hide footer section above CA */
+    section.footer {
+      display: none !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* Remove colored background from section_speakers */
+    aside.section_speakers {
+      background: #ffffff !important;
+      background-color: #ffffff !important;
+      padding-bottom: 0 !important;
+    }
+
+    .section---how-to-buy .howtodiv {
+      background: #ffffff !important;
+      border: 3px solid #000 !important;
+      border-radius: 12px !important;
+      box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .section---how-to-buy .heading {
+      color: #000 !important;
+      text-shadow: none !important;
+    }
+
+    .section---how-to-buy .heading-2 {
+      color: #fff !important;
+      text-shadow: none !important;
+    }
+
+    .section---how-to-buy .paragraph {
+      color: #333 !important;
+      text-shadow: none !important;
+    }
+
+    .section---how-to-buy .howto-img {
+      border: 2px solid #000 !important;
+      border-radius: 8px !important;
+      background: #fff !important;
+    }
+
+    /* CA section - push copy to right and higher up */
+    .txttt {
+      right: 20px !important;
+      left: auto !important;
+      top: 15% !important;
+      box-sizing: border-box !important;
+    }
+
+    .div-block-14 {
+      width: auto !important;
+      max-width: calc(100vw - 40px) !important;
+      box-sizing: border-box !important;
+    }
+
+    .heading-7.caa {
+      word-break: break-all !important;
+      overflow-wrap: break-word !important;
+      hyphens: none !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Social Icon Animations - enhanced with rotation snap */
+    @keyframes telegram-bounce {
+
+      0%,
+      100% {
+        transform: translateY(-4px) scale(1.1) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-8px) scale(1.15) rotate(2deg);
+      }
+    }
+
+    @keyframes twitter-shake {
+
+      0%,
+      100% {
+        transform: translateY(-4px) scale(1.1) rotate(0deg);
+      }
+
+      25% {
+        transform: translateY(-4px) scale(1.1) rotate(-6deg);
+      }
+
+      75% {
+        transform: translateY(-4px) scale(1.1) rotate(6deg);
+      }
+    }
+
+    @keyframes etherscan-pulse {
+
+      0%,
+      100% {
+        transform: translateY(-4px) scale(1.1) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-4px) scale(1.2) rotate(-2deg);
+      }
+    }
+
+    @keyframes dex-wiggle {
+
+      0%,
+      100% {
+        transform: translateY(-4px) scale(1.1) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-4px) scale(1.1) rotate(-10deg);
+      }
+
+      66% {
+        transform: translateY(-4px) scale(1.1) rotate(10deg);
+      }
+    }
+
+    /* Responsive - Tablet */
+    @media screen and (max-width: 768px) {
+      .wojak-nav {
+        height: 60px;
+        padding: 0 15px;
+      }
+
+      .nav-music-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .nav-music-btn img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .nav-logo-text {
+        font-size: 24px !important;
+      }
+
+      .nav-right {
+        gap: 8px;
+      }
+
+      .nav-social {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+      }
+
+      .nav-social img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    /* Responsive - Mobile */
+    @media screen and (max-width: 480px) {
+      .wojak-nav {
+        height: 55px;
+        padding: 0 10px;
+      }
+
+      .nav-music-btn {
+        width: 34px;
+        height: 34px;
+      }
+
+      .nav-music-btn img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .nav-logo-text {
+        font-size: 20px !important;
+      }
+
+      .nav-right {
+        gap: 6px;
+      }
+
+      .nav-social {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+      }
+
+      .nav-social img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body data-w-id="697419cc5592c9fe72667be8" class="body">
+  <!-- Fake cursor element - placed first for immediate render -->
+  <div id="fakeCursor"></div>
+  <script>
+    (function () {
+      const fc = document.getElementById('fakeCursor');
+      let mouseInWindow = false;
+
+      // Track mouse position
+      document.addEventListener('mousemove', function (e) {
+        mouseInWindow = true;
+        fc.style.left = e.clientX + 'px';
+        fc.style.top = e.clientY + 'px';
+        fc.style.opacity = '1';
+      }, { passive: true });
+
+      // Hide when mouse leaves window
+      document.addEventListener('mouseleave', function () {
+        mouseInWindow = false;
+        fc.style.opacity = '0';
+      });
+
+      // Show when mouse enters window
+      document.addEventListener('mouseenter', function (e) {
+        mouseInWindow = true;
+        fc.style.left = e.clientX + 'px';
+        fc.style.top = e.clientY + 'px';
+        fc.style.opacity = '1';
+      });
+
+      // Handle visibility change (tab switching)
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          fc.style.opacity = '0';
+        }
+      });
+
+      // Ensure cursor stays hidden even on dynamically added elements
+      const observer = new MutationObserver(function () {
+        document.querySelectorAll('*').forEach(function (el) {
+          if (getComputedStyle(el).cursor !== 'none') {
+            el.style.setProperty('cursor', 'none', 'important');
+          }
+        });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+
+  <!-- Fixed Navigation Header -->
+  <nav class="wojak-nav" id="wojakNav">
+    <!-- Left: Music Button -->
+    <!-- <div class="nav-left">
+      <button class="nav-music-btn" id="navMusicBtn" aria-label="Toggle music">
+        <img src="images/play.png" alt="Play" id="navMusicIcon">
+      </button>
+    </div> -->
+
+    <!-- Center: Wojak Logo Wordmark -->
+    <div class="nav-center">
+      <a href="#" class="nav-logo-link" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+        <span class="nav-logo-text" style="  font-family: Gloria Hallelujah, cursive !important;
+  font-weight: 400;
+  color: #f8d618 !important; 
+  font-style: normal;">Asteroid</span>
+      </a>
+    </div>
+
+    <!-- Right: Social Icons -->
+    <div class="nav-right">
+      <a href="https://t.me/asteroid_OG" target="_blank" class="nav-social telegram" aria-label="Telegram">
+        <img src="images/tg.png" alt="Telegram">
+      </a>
+      <a href="https://x.com/asteroidfanog" target="_blank" class="nav-social twitter" aria-label="X (Twitter)">
+        <img src="images/x.png" alt="X">
+      </a>
+      <a href="https://dexscreener.com/ethereum/0x7Dfc9DD51638573a812b39d33EDed20Df468E7bC" target="_blank"
+        class="nav-social dexscreener" aria-label="DexScreener">
+        <img src="images/dex.png" alt="DexScreener">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Navigation Scroll Controller -->
+  <script>
+    (function () {
+      const nav = document.getElementById('wojakNav');
+      let ticking = false;
+
+      // Scroll handler - show/hide nav based on scroll position
+      function updateNav() {
+        const scrollY = window.scrollY;
+        const threshold = 150; // Show nav after scrolling this many pixels
+
+        if (scrollY > threshold) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(updateNav);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
+
+  <div data-w-id="e9789b6e-532d-7481-7513-fd87d23dc5d6" class="div-block-5 luxy custom-cursor-area cursor-style">
+    <div class="code-embed-3 w-embed w-script"></div>
+    <div class="css-code w-embed">
+      <style>
+        @media (any-hover: none) {
+
+          .cursor-wrapper,
+          .js-cursor,
+          .gsap-cursor {
+            display: none;
+          }
+        }
+      </style>
+    </div>
+    <div class="button---dic">
+      <a data-w-id="f774a3ff-eafa-7398-fbc9-fb4750d3e81b"
+        href="https://app.uniswap.org/swap?&chain=eth&use=v2&outputCurrency=0xaff2565091e7207191dbe340b8528d02fa78d044&inputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+        target="_blank" style="text-decoration:none; display:inline-block;">
+
+        <div style="
+        padding:12px 28px;
+        background:#000;
+        color:#fff;
+        font-weight:600;
+        font-size:16px;
+        border-radius:8px;
+        text-align:center;
+        transition:all 0.3s ease;
+        cursor:pointer;
+        font-family: 'c';
+        
+    ">
+          Buy Now
+        </div>
+
+      </a>
+    </div>
+    <section class="section">
+      <div class="w-layout-blockcontainer container w-container">
+        <div class="div-block"><img src="/D (6).png" loading="lazy" sizes="100vw" alt="" class="image"><img
+            src="/loo.png" loading="lazy" sizes="100vw" alt="" class="image-4 parallax-wojak-up"
+            style="transform: translateY(0px) scale(1) !important;"></div>
+        <div class="div-block-2 parallax-text-down" style="transform: translateY(0px) scale(1) !important; opacity: 1;">
+          <h1 class="wojak-logo-text" style=" font-family: Gloria Hallelujah, cursive !important;
+  font-weight: 400;
+  color: #f2df0e !important; 
+  font-style: normal; ">Asteroid</h1>
+        </div>
+        <div class="divdiv duvduv1"><img src="/S (4).png" loading="lazy" sizes="100vw" alt="" class="image-7">
+        </div>
+        <div class="divdiv dicv2"><img src="/S (7).png" loading="lazy" sizes="100vw" alt="" class="image-6">
+        </div>
+        <div class="div-block-4 desktop"></div>
+      </div>
+      <div class="code-embed w-embed w-script"><!-- Elfsight Background Music | Untitled Background Music -->
+        <!-- Elfsight Background Music | wojak - Hidden UI, controlled by custom buttons -->
+        <script src="js/platform.js" async=""></script>
+        <div class="elfsight-app-3883e582-f371-41b4-8666-6c6873b4398e elfsight-hidden" data-elfsight-app-lazy=""></div>
+      </div>
+      <!-- <div data-w-id="6a57d55c-ae81-31fe-3b86-47640a4fc58f" style="opacity: 0; cursor: none !important;"
+        class="div-block-22"><img src="images/play.png" loading="lazy" alt="" class="music-btn"></div> -->
+    </section>
+
+    <!-- Wojak Faces Infinite Marquee Banner -->
+    <div class="wojak-marquee">
+      <div class="marquee-track">
+        <!-- First set of images (3x repeated for length) -->
+        <div class="marquee-group" aria-hidden="false">
+          <div class="marquee-item"><img src="/D (1).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (1).png" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D__4_-removebg-preview.png" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (2).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (4).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (5).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (6).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (7).jpg" alt="Wojak"></div>
+        </div>
+        <!-- Duplicate set for seamless infinite loop (MUST be identical) -->
+        <div class="marquee-group" aria-hidden="true">
+          <div class="marquee-item"><img src="/D (1).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (1).png" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D__4_-removebg-preview.png" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (2).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (4).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (7).jpg" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (7).png" alt="Wojak"></div>
+          <div class="marquee-item"><img src="/D (9).jpg" alt="Wojak"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section2">
+      <h1 class="section2-header">Links</h1>
+      <div class="section2-inner">
+        <div class="section2-image-col">
+          <img src="/D (8).jpg" loading="lazy" alt="Wojak Community">
+        </div>
+        <div class="section2-links-col">
+          <div class="div-block-19">
+            <a href="https://t.me/asteroid_OG" target="_blank" class="link-block-2 w-inline-block">
+              <div class="div-block-20">
+                <img src="images/tg.png" loading="lazy" alt="" class="image-21">
+                <h1 class="heading-9">Telegram</h1>
+              </div>
+            </a>
+            <a href="https://x.com/asteroidfanog" target="_blank" class="link-block-2 w-inline-block">
+              <div class="div-block-20 xx">
+                <img src="images/x.png" loading="lazy" alt="" class="image-21">
+                <h1 class="heading-9">X (Twitter)</h1>
+              </div>
+            </a>
+            <a href="https://dexscreener.com/ethereum/0x7Dfc9DD51638573a812b39d33EDed20Df468E7bC" target="_blank"
+              class="link-block-2 w-inline-block">
+              <div class="div-block-20 dexxx">
+                <img src="images/dex.png" loading="lazy" alt="" class="image-21">
+                <h1 class="heading-9">DexScreener</h1>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section style="padding:40px;  font-family:Arial, sans-serif;">
+      <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    max-width:1200px;
+    margin:auto;
+    align-items:stretch;
+  ">
+
+        <!-- LEFT: YOUTUBE VIDEO -->
+        <div style="
+      flex:1 1 500px;
+      /* background:#1e293b; */
+      border-radius:16px;
+      padding:16px;
+      /* box-shadow:0 10px 25px rgba(0,0,0,0.4); */
+      position:relative;
+    ">
+          <div style="
+        position:relative;
+        padding-bottom:56.25%;
+        height:0;
+        overflow:hidden;
+        border-radius:12px;
+      ">
+            <iframe id="ytVideo" src="https://www.youtube.com/embed/yxAWlH0YLow?enablejsapi=1" style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            border:none;
+            border-radius:12px;
+          " allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+
+            <!-- Play Button -->
+            <button onclick="toggleVideo()" id="playBtn" style="
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            background:rgba(255,255,255,0.9);
+            border:none;
+            border-radius:50%;
+            width:70px;
+            height:70px;
+            cursor:pointer;
+            font-size:24px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.5);
+          ">
+              ▶
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: TWITTER POST -->
+        <div style="
+      flex:1 1 400px;
+      /* background:#1e293b; */
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.4);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    ">
+          <div style="max-width:100%;">
+            <blockquote class="twitter-tweet">
+              <p lang="en" dir="ltr">
+                At 15 years old, Liv Perrotto’s biggest dream was to meet
+                <a href="https://twitter.com/elonmusk">@elonmusk</a>...
+              </p>
+              &mdash; Glenn Beck (@glennbeck)
+              <a href="https://twitter.com/glennbeck/status/2044889292225311088">
+                April 16, 2026
+              </a>
+            </blockquote>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+
+    <script>
+      let player;
+      let isPlaying = false;
+
+      function toggleVideo() {
+        const iframe = document.getElementById("ytVideo").contentWindow;
+        if (!isPlaying) {
+          iframe.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          document.getElementById("playBtn").innerHTML = "⏸";
+          isPlaying = true;
+        } else {
+          iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          document.getElementById("playBtn").innerHTML = "▶";
+          isPlaying = false;
+        }
+      }
+    </script>
+
+
+    <section class="section---how-to-buy">
+      <h1 class="section2-header">How To Buy</h1>
+      <div data-w-id="41b89817-98e5-3044-a880-ed0974bff990" class="collection-list">
+        <img src="/D (1).png" loading="lazy" sizes="(max-width: 634px) 100vw, 634px, 100vw" alt="" class="image-13">
+        <div class="collection-item-main">
+          <div data-w-id="41b89817-98e5-3044-a880-ed0974bff992" class="howtodiv">
+            <h1 class="heading-2">1</h1><img src="images/metamask_wojak.png" loading="lazy" alt="" class="howto-img">
+            <h1 class="heading">Download Metamask</h1>
+            <p class="paragraph">Download <a href="https://metamask.io" target="_blank" class="inline-link"
+                data-brand="metamask">MetaMask</a> or your wallet of choice from the <a
+                href="https://apps.apple.com/app/metamask/" target="_blank" class="inline-link" data-brand="apple">App
+                Store</a> or <a href="https://play.google.com/store/apps/details?id=io.metamask" target="_blank"
+                class="inline-link" data-brand="google">Play Store</a>. <br><br>Desktop users, download
+              the <a href="https://chromewebstore.google.com/detail/metamask" target="_blank" class="inline-link"
+                data-brand="google">Chrome extension</a> by going to <a href="https://metamask.io" target="_blank"
+                class="inline-link" data-brand="metamask">metamask.io</a></p>
+          </div>
+        </div>
+        <div class="div-block-18"></div>
+        <div class="collection-item-main">
+          <div class="howtodiv">
+            <h1 class="heading-2">2</h1><img src="images/eth_wojak.png" loading="lazy" alt="" class="howto-img">
+            <h1 class="heading">Get Some ETH</h1>
+            <p class="paragraph">Have <a href="https://ethereum.org" target="_blank" class="inline-link"
+                data-brand="eth">ETH</a> in your wallet to switch to $ASTEROID
+
+              . <br><br>If you don't have any ETH, you can
+              buy directly on <a href="https://portfolio.metamask.io/buy" target="_blank" class="inline-link"
+                data-brand="metamask">MetaMask</a>, transfer from another wallet, or buy on an exchange like <a
+                href="https://www.coinbase.com" target="_blank" class="inline-link">Coinbase</a> and send it to your
+              wallet.</p>
+          </div>
+        </div>
+        <div class="div-block-18"></div>
+        <div class="collection-item-main">
+          <div class="howtodiv"><img src="images/uniswap_wojak.png" loading="lazy" alt="" class="howto-img">
+            <h1 class="heading">Go to Uniswap</h1>
+            <h1 class="heading-2">3</h1>
+            <p class="paragraph">Connect to <a href="https://app.uniswap.org" target="_blank" class="inline-link"
+                data-brand="uniswap">Uniswap</a>. <br><br>Go to <a
+                href="https://app.uniswap.org/swap?&chain=eth&use=v2&outputCurrency=0xaff2565091e7207191dbe340b8528d02fa78d044&inputCurrency=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+                target="_blank" class="inline-link" data-brand="uniswap">app.uniswap.org</a> in Chrome or on the browser
+              inside your <a href="https://metamask.io" target="_blank" class="inline-link"
+                data-brand="metamask">MetaMask</a> app. Connect your wallet. Paste the $ASTEROID
+
+              token address into
+              Uniswap, select ASTEROID
+              , and confirm. When MetaMask prompts you for a wallet signature, sign.</p>
+          </div>
+        </div>
+        <div class="div-block-18"></div>
+        <div class="collection-item-main">
+          <div class="howtodiv"><img src="/loo.png" loading="lazy" alt="" class="howto-img">
+            <h1 class="heading">Buy $ASTEROID
+
+            </h1>
+            <p class="paragraph">Switch <a href="https://ethereum.org" target="_blank" class="inline-link"
+                data-brand="eth">ETH</a> for $ASTEROID
+
+              . <br><br>We have ZERO taxes so you don’t need to worry about buying
+              with a specific slippage, although you may need to use slippage during times of market volatility. Track
+              the price on <a href="https://www.dextools.io/app/token/asteroidog" target="_blank"
+                class="inline-link">DexTools</a>.</p>
+            <h1 class="heading-2">4</h1>
+          </div>
+        </div>
+      </div><img src="/ss.png" loading="lazy" alt="" class="image-19 parallax-grow">
+    </section>
+    <div class="wojak-heads"><img src="/D (1).jpg" loading="lazy"
+        style="-webkit-transform:translate3d(-115px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(65deg) skew(0, 0);-moz-transform:translate3d(-115px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(65deg) skew(0, 0);-ms-transform:translate3d(-115px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(65deg) skew(0, 0);transform:translate3d(-115px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(65deg) skew(0, 0)"
+        data-w-id="878a16ec-35bc-c523-b003-9d00fa17f9d6" alt="" class="image-10 wojak-head1"><img src="/ss.png"
+        loading="lazy"
+        style="-webkit-transform:translate3d(111px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-84deg) skew(0, 0);-moz-transform:translate3d(111px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-84deg) skew(0, 0);-ms-transform:translate3d(111px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-84deg) skew(0, 0);transform:translate3d(111px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(-84deg) skew(0, 0)"
+        data-w-id="323ed0cb-4645-006c-e84b-121b513bad35" alt="" class="image-10 head2"><img src="/D (3).jpg"
+        loading="lazy"
+        style="-webkit-transform:translate3d(0px, 88px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(1deg) skew(0, 0);-moz-transform:translate3d(0px, 88px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(1deg) skew(0, 0);-ms-transform:translate3d(0px, 88px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(1deg) skew(0, 0);transform:translate3d(0px, 88px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(1deg) skew(0, 0)"
+        data-w-id="5577d740-07ce-fd08-5ae8-4efd1848c4b3" alt="" class="image-10 head3"><img src="/D (7).jpg"
+        loading="lazy" style="transform:translate3d(50px, 0, 0) rotateZ(169deg)" alt="" class="image-10 head4"><img
+        src="/D (5).jpg" loading="lazy" style="transform:translate3d(-80px, 0, 0) rotateZ(25deg)" alt=""
+        class="image-10 head5"><img src="/D (7).png" loading="lazy"
+        style="transform:translate3d(90px, 0, 0) rotateZ(-42deg)" alt="" class="image-10 head6"><img src="/D (5).png"
+        loading="lazy" style="transform:translate3d(-60px, 50px, 0) rotateZ(15deg)" alt="" class="image-10 head7"><img
+        src="/D (9).jpg" loading="lazy" style="transform:translate3d(70px, -40px, 0) rotateZ(-30deg)" alt=""
+        class="image-10 head8">
+    </div>
+
+
+    <section class="addy">
+      <div class="w-layout-blockcontainer container-3 w-container">
+        <div class="div-block-12"><img src="/gh.png" loading="lazy" alt="" class="image-15 parallax-slide-right">
+          <div class="div-block-13"></div>
+          <div class="txttt">
+            <div class="div-block-15">
+              <h1 class="heading-7">CA</h1>
+              <div class="div-block-14">
+                <h1 class="heading-7 caa">0xAFF2565091E7207191dBe340B8528D02FA78d044</h1>
+                <button class="copy-ca-btn" id="copyCABtn" data-ca="0xAFF2565091E7207191dBe340B8528D02FA78d044">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                    </path>
+                  </svg>
+                  <span>Copy CA</span>
+                </button>
+              </div>
+            </div>
+            <div class="div-block-16">
+              <div data-w-id="33b5ab84-f5f4-9a9d-b735-e5c69135e6c9" style="opacity:0">
+                <h1 class="heading-8">Supply:
+                  1,000,000,000</h1>
+              </div>
+              <div data-w-id="dec72a59-8427-b948-5568-76adc424476e" style="opacity:0">
+                <h1 class="heading-8">ETH Network</h1>
+              </div>
+              <div data-w-id="19cf0277-7a77-7843-842b-a4a61598d713" style="opacity:0"><a href="#" target="_blank"
+                  class="badge-link">
+                  <h1 class="heading-8">LP: BURNT</h1>
+                </a></div>
+              <div style="opacity:1"><a href="#" target="_blank" class="badge-link">
+                  <h1 class="heading-8">Contract Renounced</h1>
+                </a></div>
+              <div style="opacity:1"><a href="#" target="_blank" class="badge-link migration-wallet-link">
+                  <h1 class="heading-8">OG ASTEROID
+                  </h1>
+                </a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+  <section style="width:100%; display:flex; justify-content:center; align-items:center; padding:40px 0; ">
+
+    <div style="
+    width:90%;
+    max-width:900px;
+    /* background:#111827; */
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    padding:20px;
+    border:1px solid rgba(255,255,255,0.08);
+  ">
+
+      <!-- Title -->
+      <h2 style="
+      color:#ede619;
+      text-align:center;
+      margin-bottom:15px;
+      font-family:sans-serif;
+      letter-spacing:0.5px;
+    ">
+        Live Token Chart
+      </h2>
+
+      <!-- Dexscreener Embed -->
+      <div style="position:relative;width:100%;padding-bottom:125%;border-radius:12px;overflow:hidden;">
+        <iframe
+          src="https://dexscreener.com/ethereum/0x7Dfc9DD51638573a812b39d33EDed20Df468E7bC?embed=1&loadChartSettings=0&trades=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+          style="position:absolute;width:100%;height:100%;top:0;left:0;border:0;">
+        </iframe>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Lore Section -->
+  <section class="lore-section">
+    <div class="lore-container">
+      <h1 class="lore-title">$ASTEROID thesis</h1>
+      <p class="lore-text">
+        The story: Liv Perrotto, a 15-yr-old pediatric cancer patient, designed the Shiba plush Asteroid as the zero-g
+        indicator for SpaceX's Polaris Dawn mission. Inspired by Elon's own dog Floki. She passed away this year. Her
+        mom shared her list of questions for Elon on Twitter — the final one asked if he'd make Asteroid the official
+        SpaceX mascot. Elon replied Will answer shortly. That's the fuse.
+      </p>
+
+      <p class="lore-tagline">
+        $ASTEROID launched on ETH 2 years ago. That's the OG, and the holder from Sep 2024 just went from near-zero to
+        $370K+ on Elon's reply. Sat through 580 days of drawdown.<br><br>
+
+        During yesterday's vamp rush, ETH got two versions: one cabal launch that got sniped and raped, and the OG that
+        went parabolic. Solana couldn't get it together — no clean runner there.<br><br>
+
+        People probably missed the real OG and launched fresh copycats on ETH. Those aren't the play. The 2yr-old OG is.
+      </p>
+    </div>
+  </section>
+
+  <div class="div-block-21"><img src="/D (2).jpg" loading="lazy" alt="" class="image-22"></div>
+  <div class="background-noise"></div>
+  <div class="div-block-11"></div>
+  <script src="js/jquery.js" type="text/javascript"></script>
+  <script src="js/webflow.schunk.36b8fb49256177c8.js" type="text/javascript"></script>
+  <script src="js/webflow.schunk.ff560088e0bd9e74.js" type="text/javascript"></script>
+  <script src="js/webflow-script.js" type="text/javascript"></script>
+  <script>
+    // Global audio controller for Elfsight widget
+    // We'll find and control the Elfsight audio element once it loads
+    window.wojakAudio = null;
+    window.wojakAudioIsPlaying = false;
+
+    const mainMusicBtn = document.querySelector(".music-btn");
+    const navMusicIcon = document.getElementById("navMusicIcon");
+    const navMusicBtnElement = document.getElementById("navMusicBtn");
+
+    // Function to find Elfsight audio element
+    function findElfsightAudio() {
+      // Elfsight creates audio elements or iframes - look for audio first
+      const audioElements = document.querySelectorAll('audio');
+      for (let audio of audioElements) {
+        // Check if it's the Elfsight audio (usually has a specific src or is inside elfsight container)
+        if (audio.src && (audio.src.includes('elfsight') || audio.closest('[class*="elfsight"]'))) {
+          return audio;
+        }
+      }
+      // Fallback: get any audio element that appeared after page load
+      if (audioElements.length > 0) {
+        return audioElements[audioElements.length - 1];
+      }
+      return null;
+    }
+
+    // Function to update button icons
+    function updateMusicIcons(isPlaying) {
+      const icon = isPlaying ? "images/pause.png" : "images/play.png";
+      if (mainMusicBtn) mainMusicBtn.src = icon;
+      if (navMusicIcon) navMusicIcon.src = icon;
+    }
+
+    // Toggle music function
+    function toggleMusic() {
+      // Try to find Elfsight audio if not already found
+      if (!window.wojakAudio) {
+        window.wojakAudio = findElfsightAudio();
+      }
+
+      if (window.wojakAudio) {
+        if (!window.wojakAudioIsPlaying) {
+          window.wojakAudio.play().catch(e => console.log('Audio play failed:', e));
+          window.wojakAudioIsPlaying = true;
+          updateMusicIcons(true);
+        } else {
+          window.wojakAudio.pause();
+          window.wojakAudioIsPlaying = false;
+          updateMusicIcons(false);
+        }
+      } else {
+        // Elfsight not loaded yet - try clicking its play button
+        const elfsightBtn = document.querySelector('[class*="elfsight"] button, [class*="elfsight"] [role="button"]');
+        if (elfsightBtn) {
+          elfsightBtn.click();
+          window.wojakAudioIsPlaying = !window.wojakAudioIsPlaying;
+          updateMusicIcons(window.wojakAudioIsPlaying);
+        }
+      }
+    }
+
+    // Watch for Elfsight audio element to appear
+    const audioObserver = new MutationObserver(function (mutations) {
+      if (!window.wojakAudio) {
+        const audio = findElfsightAudio();
+        if (audio) {
+          window.wojakAudio = audio;
+          // Sync audio state with our buttons
+          audio.addEventListener('play', () => {
+            window.wojakAudioIsPlaying = true;
+            updateMusicIcons(true);
+          });
+          audio.addEventListener('pause', () => {
+            window.wojakAudioIsPlaying = false;
+            updateMusicIcons(false);
+          });
+          audio.addEventListener('ended', () => {
+            window.wojakAudioIsPlaying = false;
+            updateMusicIcons(false);
+          });
+        }
+      }
+    });
+    audioObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Attach click handlers to our custom buttons
+    if (mainMusicBtn) {
+      mainMusicBtn.addEventListener("click", toggleMusic);
+    }
+    if (navMusicBtnElement) {
+      navMusicBtnElement.addEventListener("click", toggleMusic);
+    }
+
+    // Copy CA button functionality
+    const copyCABtn = document.getElementById("copyCABtn");
+    if (copyCABtn) {
+      copyCABtn.addEventListener("click", async function () {
+        const ca = this.dataset.ca;
+        const btnText = this.querySelector("span");
+        const originalText = btnText.textContent;
+
+        try {
+          await navigator.clipboard.writeText(ca);
+          this.classList.add("copied");
+          btnText.textContent = "Copied!";
+
+          setTimeout(() => {
+            this.classList.remove("copied");
+            btnText.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          // Fallback for older browsers
+          const textarea = document.createElement("textarea");
+          textarea.value = ca;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+
+          this.classList.add("copied");
+          btnText.textContent = "Copied!";
+
+          setTimeout(() => {
+            this.classList.remove("copied");
+            btnText.textContent = originalText;
+          }, 2000);
+        }
+      });
+    }
+
+    // ==============================================
+    // PARALLAX SCROLL ANIMATIONS
+    // Disabled on screens under 1250px for performance
+    // ==============================================
+    (function () {
+      // Check if parallax should be enabled (screens 1250px and above)
+      function isParallaxEnabled() {
+        return window.innerWidth >= 1250;
+      }
+
+      // Target the gemini image for parallax effect
+      const parallaxImg = document.querySelector('img[src*="gemini_generated_image_v6ld8v6ld8v6ld8v-20copy-202-1"]');
+
+      if (parallaxImg) {
+        parallaxImg.classList.add('parallax-grow');
+
+        let ticking = false;
+
+        function updateParallax() {
+          if (!isParallaxEnabled()) {
+            parallaxImg.style.transform = '';
+            ticking = false;
+            return;
+          }
+
+          const rect = parallaxImg.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          // Check if image is in viewport
+          if (rect.top < windowHeight && rect.bottom > 0) {
+            // Calculate progress (0 to 1) based on scroll position
+            const progress = 1 - (rect.top / windowHeight);
+            const clampedProgress = Math.max(0, Math.min(1, progress));
+
+            // Parallax up: move up as user scrolls down (max -50px)
+            const translateY = -clampedProgress * 60;
+
+            // Scale: grow from 1 to 1.15 as user scrolls
+            const scale = 1 + (clampedProgress * 0.15);
+
+            parallaxImg.style.transform = `translateY(${translateY}px) scale(${scale})`;
+          }
+
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+          if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+          }
+        }, { passive: true });
+
+        // Initial call
+        updateParallax();
+      }
+
+      // Target the CA section gemini image for slide-right parallax (image-15 class)
+      const slideRightImg = document.querySelector('img.image-15[src*="wojak_punch.png"]');
+
+      if (slideRightImg) {
+        slideRightImg.classList.add('parallax-slide-right');
+
+        let slideTicking = false;
+
+        function updateSlideParallax() {
+          if (!isParallaxEnabled()) {
+            slideRightImg.style.setProperty('transform', '', '');
+            slideTicking = false;
+            return;
+          }
+
+          // Get the parent section for better scroll tracking
+          const section = slideRightImg.closest('section.addy') || slideRightImg.parentElement;
+          const rect = section ? section.getBoundingClientRect() : slideRightImg.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          // Check if section is in viewport
+          if (rect.top < windowHeight && rect.bottom > 0) {
+            // Calculate progress (0 to 1) based on scroll position
+            const progress = 1 - (rect.top / windowHeight);
+            const clampedProgress = Math.max(0, Math.min(1.2, progress)) / 1.2;
+
+            // Slide right: move from -80px to +180px (260px total travel)
+            const translateX = -80 + (clampedProgress * 260);
+
+            // Scale: grow from 1 to 1.15 as user scrolls
+            const scale = 1 + (clampedProgress * 0.15);
+
+            slideRightImg.style.setProperty('transform', `translateX(${translateX}px) scale(${scale})`, 'important');
+          }
+
+          slideTicking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+          if (!slideTicking) {
+            requestAnimationFrame(updateSlideParallax);
+            slideTicking = true;
+          }
+        }, { passive: true });
+
+        // Initial call
+        updateSlideParallax();
+      }
+
+      // Target the hero $WOJAK text container for parallax scroll DOWN
+      const wojakTextContainer = document.querySelector('.div-block-2');
+
+      if (wojakTextContainer) {
+        wojakTextContainer.classList.add('parallax-text-down');
+
+        let textTicking = false;
+
+        function updateTextParallax() {
+          // Text parallax works on tablet+ (768px+), not just 1250px+
+          if (window.innerWidth < 768) {
+            wojakTextContainer.style.setProperty('transform', '', '');
+            wojakTextContainer.style.opacity = '';
+            textTicking = false;
+            return;
+          }
+
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
+
+          // Only apply effect in the first viewport (hero section)
+          if (scrollY < windowHeight * 1.5) {
+            // Calculate progress based on scroll
+            const progress = scrollY / windowHeight;
+            const clampedProgress = Math.max(0, Math.min(1, progress));
+
+            // Move DOWN as user scrolls down (0 to 350px)
+            const translateY = clampedProgress * 350;
+
+            // Slight scale reduction for depth effect (1 to 0.92)
+            const scale = 1 - (clampedProgress * 0.08);
+
+            // Slight opacity fade (1 to 0.7)
+            const opacity = 1 - (clampedProgress * 0.3);
+
+            wojakTextContainer.style.setProperty('transform', `translateY(${translateY}px) scale(${scale})`, 'important');
+            wojakTextContainer.style.opacity = opacity;
+          }
+
+          textTicking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+          if (!textTicking) {
+            requestAnimationFrame(updateTextParallax);
+            textTicking = true;
+          }
+        }, { passive: true });
+
+        // Initial call
+        updateTextParallax();
+      }
+
+      // Target the hero Wojak character image for parallax scroll UP + grow
+      const wojakCharImg = document.querySelector('img.image-4[src*="images2/wojaktree.jp"]');
+
+      if (wojakCharImg) {
+        wojakCharImg.classList.add('parallax-wojak-up');
+
+        let wojakTicking = false;
+
+        function updateWojakParallax() {
+          if (!isParallaxEnabled()) {
+            wojakCharImg.style.setProperty('transform', '', '');
+            wojakTicking = false;
+            return;
+          }
+
+          const scrollY = window.scrollY;
+          const windowHeight = window.innerHeight;
+
+          // Only apply effect in the first viewport (hero section)
+          if (scrollY < windowHeight * 1.5) {
+            // Calculate progress based on scroll
+            const progress = scrollY / windowHeight;
+            const clampedProgress = Math.max(0, Math.min(1, progress));
+
+            // Move UP as user scrolls down (0 to -120px)
+            const translateY = -(clampedProgress * 120);
+
+            // Grow slightly (1 to 1.15)
+            const scale = 1 + (clampedProgress * 0.15);
+
+            wojakCharImg.style.setProperty('transform', `translateY(${translateY}px) scale(${scale})`, 'important');
+          }
+
+          wojakTicking = false;
+        }
+
+        window.addEventListener('scroll', function () {
+          if (!wojakTicking) {
+            requestAnimationFrame(updateWojakParallax);
+            wojakTicking = true;
+          }
+        }, { passive: true });
+
+        // Initial call
+        updateWojakParallax();
+      }
+
+      // Handle window resize - reset parallax styles when crossing 1250px threshold
+      let lastWidth = window.innerWidth;
+      window.addEventListener('resize', function () {
+        const currentWidth = window.innerWidth;
+        // Check if we crossed the 1250px threshold (for most parallax)
+        if ((lastWidth >= 1250 && currentWidth < 1250) || (lastWidth < 1250 && currentWidth >= 1250)) {
+          // Reset non-text parallax elements
+          if (parallaxImg) parallaxImg.style.transform = '';
+          if (slideRightImg) slideRightImg.style.setProperty('transform', '', '');
+          if (wojakCharImg) wojakCharImg.style.setProperty('transform', '', '');
+
+          // Re-apply if now above threshold
+          if (currentWidth >= 1250) {
+            if (parallaxImg) updateParallax();
+            if (slideRightImg) updateSlideParallax();
+            if (wojakCharImg) updateWojakParallax();
+          }
+        }
+
+        // Check if we crossed the 768px threshold (for text parallax)
+        if ((lastWidth >= 768 && currentWidth < 768) || (lastWidth < 768 && currentWidth >= 768)) {
+          if (wojakTextContainer) {
+            wojakTextContainer.style.setProperty('transform', '', '');
+            wojakTextContainer.style.opacity = '';
+          }
+          // Re-apply if now above threshold
+          if (currentWidth >= 768) {
+            if (wojakTextContainer) updateTextParallax();
+          }
+        }
+        lastWidth = currentWidth;
+      }, { passive: true });
+    })();
+  </script>
+
+
+
+
+  <script src="js/luxy.js"></script>
+
+  <script charset="utf-8">
+    var isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+    if (!isMobile) {
+      luxy.init({
+        wrapper: '#luxy',
+        wrapperSpeed: 0.065,
+
+      });
+    }
+  </script>
+
+
+
+
+  <style>
+    .splide__arrow.splide__arrow--next,
+    .splide__arrow.splide__arrow--prev,
+    .splide__pagination {
+      display: none;
+    }
+
+    .splide *:focus {
+      outline: none;
+    }
+  </style>
+  <link rel="stylesheet" href="css/splide.min.css">
+  <script src="js/splide.min.js"></script>
+  <script>
+    new Splide('.splide', {
+      perPage: 3,
+      perMove: 1,
+      type: 'loop',
+      focus: 'center',
+      breakpoints: {
+        767: {
+          perPage: 1,
+        }
+      }
+    }).mount();
+
+    $('.next-splide').click(function () {
+      $('.splide__arrow.splide__arrow--next').click();
+    });
+
+    $('.prev-splide').click(function () {
+      $('.splide__arrow.splide__arrow--prev').click();
+    });
+  </script>
+
+  <script>
+
+    $('.trigger').mouseenter(function () {
+      $('.cursor__text').text('OPEN');
+    });
+
+    $('.trigger').mouseleave(function () {
+      $('.cursor__text').text('DRAG');
+    });
+
+    $('.control').hover(function () {
+      $('.cursor__dot1').toggleClass('opacity-0');
+      $('.cursor__dot2').toggleClass('light-ring');
+    });
+
+    $('.trigger').click(function () {
+      $('.cursor').toggleClass('hide-cursor');
+    });
+
+    $('.trigger').click(function () {
+      $('body').toggleClass('overflow-hidden');
+    });
+  </script>
+
+  <script src="js/anime.min.js"></script>
+  <script>
+    // Fade Up Animation
+    var fadeUp = anime.timeline({
+      loop: false,
+      autoplay: false,
+    });
+
+    fadeUp
+      .add({
+        targets: '.nav-link__contain, .sublink__contain',
+        translateY: [300, 0],
+        translateZ: 0,
+        opacity: [0, 1],
+        easing: "easeOutExpo",
+        duration: 1400,
+        delay: (el, i) => 0 + 150 * i
+      });
+
+    // Play animaton when something is clicked
+    $(".trigger").click(function () {
+      setTimeout(() => {
+        fadeUp.restart();
+      }, 300);
+    });
+
+
+    //mouse hover code
+    $('.splide__list').on('mouseenter mouseleave', function () {
+      $('.cursor__dot1').toggleClass('is--larger');
+      $('.cursor__dot2').toggleClass('is--larger');
+    });
+
+  </script>
+
+</body>
+
+</html>
