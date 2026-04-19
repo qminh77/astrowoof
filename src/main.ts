@@ -153,8 +153,8 @@ app.innerHTML = `
       <img src="${cursorImage}" alt="" />
     </div>
 
-    <div class="browser window" id="top">
-      ${renderTitleBar("Astrowoof_Memecoin_Dashboard.exe", "v1.1")}
+    <div class="browser window" id="top" data-window-id="main-shell" data-window-title="Main Browser Window">
+      ${renderTitleBar("Astrowoof_Memecoin_Dashboard.exe", "v1.1", "main-shell")}
       <div class="coin-burst-layer" data-coin-layer aria-hidden="true"></div>
 
       <div class="browser-toolbar">
@@ -531,6 +531,10 @@ app.innerHTML = `
         <span data-status-tab>Tab: Overview</span>
       </div>
     </div>
+
+    <button type="button" class="main-restore-button" data-main-restore hidden>
+      Reopen Main Window
+    </button>
   </div>
 `;
 
@@ -719,36 +723,49 @@ function setupCustomCursor(): void {
 
   document.documentElement.classList.add("has-custom-cursor");
 
+  const hotspotX = 2;
+  const hotspotY = 2;
   let targetX = window.innerWidth * 0.5;
   let targetY = window.innerHeight * 0.5;
-  let currentX = targetX;
-  let currentY = targetY;
   let isPressed = false;
 
   const render = (): void => {
-    currentX += (targetX - currentX) * 0.22;
-    currentY += (targetY - currentY) * 0.22;
-
     const scale = isPressed ? 0.9 : 1;
-    cursor.style.transform = `translate3d(${currentX - 18}px, ${currentY - 14}px, 0) scale(${scale})`;
-    window.requestAnimationFrame(render);
+    cursor.style.transform = `translate3d(${targetX - hotspotX}px, ${targetY - hotspotY}px, 0) scale(${scale})`;
   };
 
   window.addEventListener("pointermove", (event) => {
+    if (event.pointerType && event.pointerType !== "mouse") {
+      return;
+    }
+
     targetX = event.clientX;
     targetY = event.clientY;
     cursor.classList.add("is-visible");
+    render();
   });
 
-  window.addEventListener("pointerdown", () => {
+  window.addEventListener("pointerdown", (event) => {
+    if (event.pointerType && event.pointerType !== "mouse") {
+      return;
+    }
+
+    targetX = event.clientX;
+    targetY = event.clientY;
     isPressed = true;
     cursor.classList.add("is-clicking");
+    render();
   });
 
-  window.addEventListener("pointerup", () => {
+  const release = (): void => {
     isPressed = false;
     cursor.classList.remove("is-clicking");
-  });
+    render();
+  };
+
+  window.addEventListener("pointerup", release);
+  window.addEventListener("pointercancel", release);
+  window.addEventListener("blur", release);
 
   window.addEventListener("pointerleave", () => {
     cursor.classList.remove("is-visible");
@@ -1042,6 +1059,8 @@ function setupWindowControls(): void {
   const controls = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-control]"));
   const restoreDock = document.querySelector<HTMLElement>("[data-restore-dock]");
   const restoreButtonsHost = document.querySelector<HTMLElement>("[data-restore-buttons]");
+  const mainShell = document.querySelector<HTMLElement>(".browser[data-window-id='main-shell']");
+  const mainRestoreButton = document.querySelector<HTMLButtonElement>("[data-main-restore]");
   const windowMap = new Map<string, HTMLElement>();
 
   for (const item of windows) {
@@ -1104,6 +1123,15 @@ function setupWindowControls(): void {
     syncRestoreDock();
   };
 
+  if (mainShell && mainRestoreButton) {
+    mainRestoreButton.addEventListener("click", () => {
+      mainShell.classList.remove("is-main-closed");
+      mainShell.classList.remove("is-main-minimized");
+      mainRestoreButton.hidden = true;
+      setStatus("Main window restored.");
+    });
+  }
+
   for (const button of controls) {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -1113,6 +1141,38 @@ function setupWindowControls(): void {
 
       if (!windowId || !action) {
         return;
+      }
+
+      if (windowId === "main-shell" && mainShell) {
+        if (action === "minimize") {
+          const minimized = mainShell.classList.toggle("is-main-minimized");
+
+          if (!mainShell.classList.contains("is-main-closed") && mainRestoreButton) {
+            mainRestoreButton.hidden = !minimized;
+          }
+
+          setStatus(minimized ? "Main window minimized." : "Main window restored.");
+          return;
+        }
+
+        if (action === "maximize") {
+          const maximized = mainShell.classList.toggle("is-main-maximized");
+          setStatus(maximized ? "Main window maximized." : "Main window returned to normal size.");
+          return;
+        }
+
+        if (action === "close") {
+          mainShell.classList.remove("is-main-maximized");
+          mainShell.classList.remove("is-main-minimized");
+          mainShell.classList.add("is-main-closed");
+
+          if (mainRestoreButton) {
+            mainRestoreButton.hidden = false;
+          }
+
+          setStatus("Main window closed.");
+          return;
+        }
       }
 
       const targetWindow = windowMap.get(windowId);
