@@ -568,6 +568,117 @@ img {
   line-height: 1.72;
 }
 
+.howto-grid {
+  margin-top: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.howto-card {
+  padding: 0.75rem;
+  border: 1px solid #a4acbe;
+  background: #edf1f8;
+}
+
+.howto-step {
+  margin: 0;
+  color: #2f3953;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.howto-card h3 {
+  margin: 0.4rem 0 0;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #1d2945;
+}
+
+.buy-action-row {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.contract-block,
+.ref-window {
+  margin-top: 0.85rem;
+  overflow: hidden;
+}
+
+.contract-body,
+.ref-body {
+  padding: 0.72rem;
+  background: #e9edf7;
+}
+
+.contract-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #2f3953;
+}
+
+.copy-row {
+  margin-top: 0.45rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.copy-row + .contract-label {
+  margin-top: 0.8rem;
+}
+
+.copy-value {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid #9ea8bf;
+  background: #f6f8fc;
+  color: #222d49;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.copy-button {
+  min-height: 2.2rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.74rem;
+}
+
+.copy-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.token-flags {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.token-flags span {
+  padding: 0.36rem 0.58rem;
+  border: 1px solid #9ea8bf;
+  background: #e8edf7;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2d3751;
+}
+
 .lead {
   font-weight: 700;
   color: #26314d;
@@ -592,6 +703,18 @@ img {
 .mission-card-body img {
   width: 100%;
   border: 1px solid #8f98ad;
+}
+
+.ref-source a,
+.footer-meta a {
+  text-decoration: underline;
+}
+
+.ref-links {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
 }
 
 .stats-grid {
@@ -705,6 +828,11 @@ img {
   font-size: 0.88rem;
 }
 
+.footer-meta {
+  margin-top: 0.38rem !important;
+  font-size: 0.82rem;
+}
+
 .status-bar {
   display: flex;
   justify-content: space-between;
@@ -755,7 +883,8 @@ img {
   }
 
   .stats-grid,
-  .community-grid {
+  .community-grid,
+  .howto-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -787,7 +916,8 @@ img {
   .mini-window-grid,
   .roadmap-list,
   .stats-grid,
-  .community-grid {
+  .community-grid,
+  .howto-grid {
     grid-template-columns: 1fr;
   }
 
@@ -811,6 +941,14 @@ img {
   .status-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .buy-action-row {
+    flex-direction: column;
+  }
+
+  .copy-row {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -435,6 +435,22 @@ app.innerHTML = `
                   )
                   .join("")}
               </div>
+
+              <div class="token-flags">
+                <span>ETH Network</span>
+                <span>0 / 0 Tax</span>
+                <span>Renounced Ownership</span>
+                <span>Community Driven</span>
+              </div>
+
+              <div class="buy-action-row">
+                <a class="button" href="${asteroidReference.uniswap}" target="_blank" rel="noreferrer">
+                  Reference OG Swap Link
+                </a>
+                <a class="button" href="${asteroidReference.dex}" target="_blank" rel="noreferrer">
+                  Reference DexScreener
+                </a>
+              </div>
             </div>
           </section>
         </section>
@@ -495,6 +511,20 @@ app.innerHTML = `
                   )
                   .join("")}
               </div>
+
+              <article class="window ref-window">
+                ${renderTitleBar("OG_Asteroid_Channels.exe", "Reference")}
+                <div class="ref-body">
+                  <p>
+                    Quick reference channels from the source project for benchmarking structure and content flow.
+                  </p>
+                  <div class="ref-links">
+                    <a class="button" href="${asteroidReference.telegram}" target="_blank" rel="noreferrer">OG Telegram</a>
+                    <a class="button" href="${asteroidReference.x}" target="_blank" rel="noreferrer">OG X</a>
+                    <a class="button" href="${asteroidReference.dex}" target="_blank" rel="noreferrer">OG Dex</a>
+                  </div>
+                </div>
+              </article>
             </div>
           </section>
         </section>
@@ -504,6 +534,7 @@ app.innerHTML = `
         ${renderTitleBar("Token_Info.txt", "Final Readout")}
         <div class="footer-body">
           <p><strong>$ASTROWOOF</strong> • Ethereum • Supply 1,000,000,000 • Tax 0/0 • Ownership Renounced</p>
+          <p class="footer-meta">Reference structure: <a href="${asteroidReference.source}" target="_blank" rel="noreferrer">${asteroidReference.source}</a></p>
           <p class="footer-note">© <span data-year></span> $ASTROWOOF</p>
         </div>
       </footer>
@@ -525,6 +556,7 @@ if (yearNode) {
 buildStars();
 setupTabsAndNavigation();
 setupOpenTabButtons();
+setupCopyButtons();
 setupDecisionWidget();
 setupChartWidget();
 setupCompareWidget();
@@ -683,6 +715,28 @@ function setupOpenTabButtons(): void {
       }
 
       tabButton.click();
+    });
+  }
+}
+
+function setupCopyButtons(): void {
+  const copyButtons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-copy-value]"));
+
+  for (const button of copyButtons) {
+    button.addEventListener("click", async () => {
+      const value = button.dataset.copyValue ?? "";
+
+      if (!value || value === "TBA") {
+        setStatus("Contract address is not available yet.");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(value);
+        setStatus("Contract copied to clipboard.");
+      } catch {
+        setStatus("Clipboard blocked. Please copy manually.");
+      }
     });
   }
 }
