@@ -39,6 +39,7 @@ type TabId = (typeof tabItems)[number]["id"];
 const dashboardImage = "/astrowoof-dashboard.jpg";
 const mascotImage = "/astrowoof-hero.jpg";
 const sloganImage = "/astrowoof-slogan.jpg";
+const cursorImage = "/cursor-doge.png";
 const astroWoofContract = "TBA";
 
 const tokenStats: TokenStat[] = [
@@ -148,9 +149,13 @@ if (!app) {
 app.innerHTML = `
   <div class="desktop">
     <div class="star-layer" aria-hidden="true"></div>
+    <div class="doge-cursor" data-doge-cursor aria-hidden="true">
+      <img src="${cursorImage}" alt="" />
+    </div>
 
     <div class="browser window" id="top">
       ${renderTitleBar("Astrowoof_Memecoin_Dashboard.exe", "v1.1")}
+      <div class="coin-burst-layer" data-coin-layer aria-hidden="true"></div>
 
       <div class="browser-toolbar">
         <div class="toolbar-actions">
@@ -223,6 +228,29 @@ app.innerHTML = `
               </div>
             </article>
           </header>
+
+          <section class="window meme-console">
+            ${renderTitleBar("Meme_Reactor.exe", "Live")}
+            <div class="meme-console-body">
+              <div class="hype-gauge">
+                <p class="hype-title">PACK HYPE LEVEL</p>
+                <div class="hype-track">
+                  <div class="hype-fill" data-hype-fill></div>
+                </div>
+                <p class="hype-value"><strong data-hype-value>64%</strong> <span data-hype-mode>Raid Mode: OFF</span></p>
+              </div>
+              <div class="meme-actions">
+                <button type="button" class="button meme-action" data-hype-action="pump">PUMP IT</button>
+                <button type="button" class="button meme-action" data-hype-action="fud">FUD SHIELD</button>
+                <button type="button" class="button meme-action" data-hype-action="raid">TOGGLE RAID</button>
+                <button type="button" class="button meme-action" data-hype-action="spark">SPARK CHAOS</button>
+              </div>
+              <ul class="meme-log" data-meme-log>
+                <li>System booted. Meme reactor online.</li>
+                <li>Community signal stable.</li>
+              </ul>
+            </div>
+          </section>
 
           <section class="mini-window-grid" aria-label="Interactive Meme Widgets">
             <article class="window mini-window draggable-window" data-window-id="decision" data-window-title="Decision Panel">
@@ -513,9 +541,12 @@ if (yearNode) {
 }
 
 buildStars();
+setupCustomCursor();
 setupTabsAndNavigation();
 setupOpenTabButtons();
 setupCopyButtons();
+setupMemeConsole();
+setupCoinBursts();
 setupDecisionWidget();
 setupChartWidget();
 setupCompareWidget();
@@ -674,6 +705,210 @@ function setupOpenTabButtons(): void {
       }
 
       tabButton.click();
+    });
+  }
+}
+
+function setupCustomCursor(): void {
+  const canUseCustomCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const cursor = document.querySelector<HTMLElement>("[data-doge-cursor]");
+
+  if (!canUseCustomCursor || !cursor) {
+    return;
+  }
+
+  document.documentElement.classList.add("has-custom-cursor");
+
+  let targetX = window.innerWidth * 0.5;
+  let targetY = window.innerHeight * 0.5;
+  let currentX = targetX;
+  let currentY = targetY;
+  let isPressed = false;
+
+  const render = (): void => {
+    currentX += (targetX - currentX) * 0.22;
+    currentY += (targetY - currentY) * 0.22;
+
+    const scale = isPressed ? 0.9 : 1;
+    cursor.style.transform = `translate3d(${currentX - 18}px, ${currentY - 14}px, 0) scale(${scale})`;
+    window.requestAnimationFrame(render);
+  };
+
+  window.addEventListener("pointermove", (event) => {
+    targetX = event.clientX;
+    targetY = event.clientY;
+    cursor.classList.add("is-visible");
+  });
+
+  window.addEventListener("pointerdown", () => {
+    isPressed = true;
+    cursor.classList.add("is-clicking");
+  });
+
+  window.addEventListener("pointerup", () => {
+    isPressed = false;
+    cursor.classList.remove("is-clicking");
+  });
+
+  window.addEventListener("pointerleave", () => {
+    cursor.classList.remove("is-visible");
+  });
+
+  render();
+}
+
+function setupMemeConsole(): void {
+  const actions = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-hype-action]"));
+  const fill = document.querySelector<HTMLElement>("[data-hype-fill]");
+  const value = document.querySelector<HTMLElement>("[data-hype-value]");
+  const mode = document.querySelector<HTMLElement>("[data-hype-mode]");
+  const log = document.querySelector<HTMLElement>("[data-meme-log]");
+
+  if (!actions.length || !fill || !value || !mode || !log) {
+    return;
+  }
+
+  let hype = 64;
+  let raidMode = false;
+
+  const actionLines: Record<string, string> = {
+    pump: "Pump button smashed. Timeline pressure increasing.",
+    fud: "FUD shield enabled. Weak hands repelled.",
+    raid: "Raid mode toggled. Pack coordination updated.",
+    spark: "Chaos spark triggered. Meme particles launched.",
+  };
+
+  const driftLines = [
+    "Whale watching says: chart still confused.",
+    "Community raids detected from Telegram.",
+    "Someone posted another cursed meme thread.",
+    "Price signal noisy, conviction still high.",
+    "Space static increased. Pack still online.",
+  ];
+
+  const clampHype = (): void => {
+    hype = Math.max(0, Math.min(100, hype));
+  };
+
+  const renderHype = (): void => {
+    fill.style.width = `${hype}%`;
+    value.textContent = `${Math.round(hype)}%`;
+    mode.textContent = raidMode ? "Raid Mode: ON" : "Raid Mode: OFF";
+  };
+
+  const pushLine = (line: string): void => {
+    const node = document.createElement("li");
+    const now = new Date();
+    const stamp = `${now.getHours().toString().padStart(2, "0")}:${now
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
+    node.textContent = `[${stamp}] ${line}`;
+    log.prepend(node);
+
+    while (log.childElementCount > 5) {
+      log.lastElementChild?.remove();
+    }
+  };
+
+  for (const button of actions) {
+    button.addEventListener("click", () => {
+      const action = button.dataset.hypeAction ?? "";
+
+      if (action === "pump") {
+        hype += randomNumber(7, 15);
+      } else if (action === "fud") {
+        hype += randomNumber(2, 6);
+      } else if (action === "raid") {
+        raidMode = !raidMode;
+        hype += raidMode ? randomNumber(4, 9) : randomNumber(-5, -1);
+      } else if (action === "spark") {
+        hype += randomNumber(1, 4);
+        const browserRect = document.querySelector<HTMLElement>(".browser-content")?.getBoundingClientRect();
+        if (browserRect) {
+          spawnCoinBurst(
+            browserRect.left + browserRect.width * 0.55,
+            browserRect.top + browserRect.height * 0.15,
+            18,
+          );
+        }
+      }
+
+      clampHype();
+      renderHype();
+
+      const line = actionLines[action] ?? "System ping accepted.";
+      pushLine(line);
+      setStatus(line);
+    });
+  }
+
+  const timer = window.setInterval(() => {
+    if (document.visibilityState !== "visible") {
+      return;
+    }
+
+    hype += raidMode ? randomNumber(-1, 5) : randomNumber(-3, 3);
+    clampHype();
+    renderHype();
+
+    if (Math.random() > 0.55) {
+      pushLine(driftLines[Math.floor(Math.random() * driftLines.length)]);
+    }
+  }, 2600);
+
+  window.addEventListener("beforeunload", () => {
+    window.clearInterval(timer);
+  });
+
+  renderHype();
+}
+
+function setupCoinBursts(): void {
+  const content = document.querySelector<HTMLElement>(".browser-content");
+
+  if (!content) {
+    return;
+  }
+
+  content.addEventListener("pointerdown", (event) => {
+    const target = event.target as HTMLElement;
+    const intensity = target.closest("button, a, .tab-button") ? 14 : 8;
+    spawnCoinBurst(event.clientX, event.clientY, intensity);
+  });
+}
+
+function spawnCoinBurst(clientX: number, clientY: number, intensity: number): void {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const layer = document.querySelector<HTMLElement>("[data-coin-layer]");
+  const browser = document.querySelector<HTMLElement>(".browser");
+
+  if (!layer || !browser) {
+    return;
+  }
+
+  const rect = browser.getBoundingClientRect();
+  const baseX = clientX - rect.left;
+  const baseY = clientY - rect.top;
+  const glyphs = ["$", "W", "+", "X"];
+
+  for (let index = 0; index < intensity; index += 1) {
+    const node = document.createElement("span");
+    node.className = "coin-burst";
+    node.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+    node.style.setProperty("--x", `${baseX}px`);
+    node.style.setProperty("--y", `${baseY}px`);
+    node.style.setProperty("--dx", `${randomNumber(-64, 64)}px`);
+    node.style.setProperty("--dy", `${randomNumber(-112, -30)}px`);
+    node.style.setProperty("--rot", `${randomNumber(-160, 160)}deg`);
+    node.style.setProperty("--dur", `${randomNumber(700, 1180)}ms`);
+    layer.appendChild(node);
+
+    node.addEventListener("animationend", () => {
+      node.remove();
     });
   }
 }
@@ -1074,6 +1309,10 @@ function getTabLabel(tabId: TabId): string {
 
 function isTabId(value: string): value is TabId {
   return tabItems.some((item) => item.id === value);
+}
+
+function randomNumber(min: number, max: number): number {
+  return Math.random() * (max - min) + min;
 }
 
 function random(min: number, max: number): string {

@@ -89,6 +89,33 @@ img {
   animation: crtFlicker 4.6s steps(8) infinite;
 }
 
+.doge-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 35;
+  width: 56px;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.52));
+  transition: opacity 120ms ease;
+}
+
+.doge-cursor img {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.doge-cursor.is-visible {
+  opacity: 1;
+}
+
+.doge-cursor.is-clicking {
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.42));
+}
+
 .star-layer {
   position: fixed;
   inset: 0;
@@ -244,6 +271,27 @@ img {
   z-index: 2;
   overflow: hidden;
   transition: filter 180ms ease;
+}
+
+.coin-burst-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.coin-burst {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  color: #ffe598;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.68rem;
+  line-height: 1;
+  text-shadow:
+    0 1px 0 #000,
+    0 0 8px rgba(255, 229, 152, 0.5);
+  animation: coinBurst var(--dur) ease-out forwards;
 }
 
 .browser::before {
@@ -479,6 +527,102 @@ img {
 .slogan-banner {
   margin-top: 1rem;
   overflow: hidden;
+}
+
+.meme-console {
+  margin-top: 0.95rem;
+  overflow: hidden;
+}
+
+.meme-console-body {
+  padding: 0.78rem;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 1px,
+      rgba(0, 0, 0, 0.02) 1px,
+      rgba(0, 0, 0, 0.02) 3px
+    ),
+    #e8edf8;
+}
+
+.hype-title {
+  margin: 0;
+  color: #27314a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hype-track {
+  margin-top: 0.5rem;
+  height: 0.95rem;
+  border: 1px solid #8f98ad;
+  background: #f7faff;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #8994ab;
+  overflow: hidden;
+}
+
+.hype-fill {
+  width: 64%;
+  height: 100%;
+  background: linear-gradient(90deg, #5f99ce, #7ec2ee 55%, #f0d279);
+  transition: width 320ms ease;
+}
+
+.hype-value {
+  margin: 0.45rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: #33405e;
+  font-size: 0.88rem;
+}
+
+.hype-value strong {
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+  color: #20314f;
+}
+
+.meme-actions {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.meme-action {
+  min-height: 2.2rem;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.7rem;
+}
+
+.meme-log {
+  margin: 0.72rem 0 0;
+  padding: 0.55rem;
+  list-style: none;
+  border: 1px solid #9da7bd;
+  background: #f4f7fc;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #99a4bb;
+}
+
+.meme-log li {
+  color: #2e3c5a;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.meme-log li + li {
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  border-top: 1px dashed rgba(52, 67, 99, 0.32);
 }
 
 .hero-banner-body,
@@ -1074,6 +1218,18 @@ img {
   }
 }
 
+@keyframes coinBurst {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx), var(--dy), 0) scale(0.62) rotate(var(--rot));
+  }
+}
+
 @media (max-width: 1080px) {
   .mini-window-grid {
     grid-template-columns: 1fr 1fr;
@@ -1087,6 +1243,10 @@ img {
 
   .mission-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .meme-actions {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -1140,12 +1300,23 @@ img {
     align-items: flex-start;
   }
 
+  .meme-actions {
+    grid-template-columns: 1fr;
+  }
+
   .buy-action-row {
     flex-direction: column;
   }
 
   .copy-row {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
   }
 }
 
